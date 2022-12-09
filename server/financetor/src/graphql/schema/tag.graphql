@@ -1,0 +1,23 @@
+
+type Tag {
+  _id: ID!
+  name: String!
+  color: String!
+  expenseCount: Int!
+}
+
+input tagInfo {
+  name: String!
+  color: String!
+}
+
+type Query {
+  getMyTags: [Tag!]
+}
+
+
+type Mutation {
+  create_tag(data: tagInfo!): Status!
+  edit_tag(_id: ID!, data: tagInfo!): Status!
+  delete_tag(_id: ID!): Status!
+}

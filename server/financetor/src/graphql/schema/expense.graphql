@@ -1,0 +1,25 @@
+
+type Expense {
+  _id: ID!
+  amount: Float!
+  tag: Tag!
+  geo: Geo!
+  date: Date!
+}
+
+input ExpenseInfo {
+  amount: Float!
+  geo: GeoInput!
+  tag: ID!
+  date: Date!
+}
+
+type Query {
+  getMyExpenses: [Expense!]!
+}
+
+type Mutation {
+  create_expense(data: ExpenseInfo!): Status!
+  delete_expense(_id: ID!): Status!
+  edit_expense(_id: ID!, data: ExpenseInfo!): Status! 
+}

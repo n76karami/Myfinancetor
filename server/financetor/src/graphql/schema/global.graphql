@@ -1,0 +1,21 @@
+scalar Date
+scalar Upload
+
+type Token {
+  token: String!
+}
+
+type Status {
+  status: Int!
+  msg: String!
+}
+
+type Geo {
+  lat: Float!
+  lon: Float!
+}
+
+input GeoInput {
+  lat: Float!
+  lon: Float!
+}
