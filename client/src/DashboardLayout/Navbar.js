@@ -21,6 +21,7 @@ query Query {
 
 const Navbar = () => {
 
+  const [cloading, setcLoading] = useState(false)
   const [nav, SetNav] = useState(false);
 
   const [open, setOpen] = useState(false);
@@ -42,18 +43,19 @@ const Navbar = () => {
     if (data) {
       refetch();
       setName(data.me.name);
-      setImg(`http://localhost:80/${data.me.img}`)
+      setImg(`http://localhost/${data.me.img}`)
     }
     
   }, [data])
   
-  if (loading) return <h1>Loading...</h1>
+  if (loading || cloading) return <h1>Loading...</h1>
 
   
   const Log_out = () => {
     
     cookies.remove('token');
-    window.location.assign('/');
+    window.sleep(500).then(() => window.location.assign('/'))
+    
 
   }
 
@@ -201,7 +203,10 @@ const Navbar = () => {
                     </ListItemButton>
                   </ListItem>
                   <ListItem>
-                    <ListItemButton onClick={Log_out}>
+                    <ListItemButton onClick={() => {
+                      // setcLoading(true)
+                      Log_out()
+                    }}>
                       <ListItemIcon>
                         <LogoutRounded
                           sx={{ fontSize: 30, color: yellow[600] }}
@@ -236,7 +241,10 @@ const Navbar = () => {
             <AccountCircleRounded />
             Edit Profile
           </MenuItem>
-          <MenuItem sx={{ display: "flex", gap: 1 }} onClick={Log_out}>
+          <MenuItem sx={{ display: "flex", gap: 1 }} onClick={() => {
+                                  // setcLoading(true)
+                                  Log_out()
+          }}>
             <LogoutRounded />
             Logout
           </MenuItem>

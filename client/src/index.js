@@ -11,6 +11,9 @@ import CustomApolloProvider from './apollo_client';
 //   cache: new InMemoryCache(),
 // });
 
+const sleep = ms => new Promise(res => setTimeout(() => res(), ms))
+window.sleep = sleep
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <ApolloProvider client={client}>
