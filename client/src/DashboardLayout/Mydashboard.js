@@ -1,8 +1,8 @@
 import { gql, useQuery } from '@apollo/client';
-import { Box, Tooltip, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { grey } from '@mui/material/colors';
 import React, { useEffect, useState } from 'react'
-import { Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, XAxis, YAxis } from 'recharts';
+import { Bar, Tooltip, BarChart, CartesianGrid, Legend, ResponsiveContainer, XAxis, YAxis } from 'recharts';
 
 const GET_MYEXPENSES = gql`
 query Query {
@@ -85,7 +85,7 @@ const Mydashboard = () => {
               }}
               barSize={20}
             >
-              <XAxis dataKey="date" scale="point" padding={{ left: 10, right: 10 }} />
+              <XAxis dataKey="date" scale="auto" padding={{ left: 10, right: 10 }} />
               <YAxis />
               <Tooltip />
               <Legend />
